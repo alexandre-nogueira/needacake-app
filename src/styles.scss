@@ -1,1 +1,72 @@
+$primary: #317a94;
+$secondary: #e15576;
+$info: #faeee7;
+$dark: #685454;
+
 /* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+body {
+  background-color: #faeee7;
+  padding-top: 55px;
+  padding-bottom: 65px;
+}
+
+.bg-pink {
+  background-color: #e15576;
+}
+
+.centered-box {
+  position: inherit;
+  margin-top: 15px;
+}
+
+.crudTableContainer {
+  overflow-y: auto;
+  max-height: 30vh;
+}
+
+@media screen and (min-width: 992px) {
+  .centered-box {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    margin-top: 0px;
+  }
+
+  .crudTableContainer {
+    overflow-y: auto;
+    max-height: 50vh;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .col-sm-mt-2 {
+    margin-top: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .col-md-mt-2 {
+    margin-top: 0.5rem;
+  }
+}
+
+.full-height {
+  height: 100%;
+}
+
+.ap-card-title {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: lightgray;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+tr.crudTableRow:hover {
+  cursor: pointer;
+}

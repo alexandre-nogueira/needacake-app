@@ -1,0 +1,152 @@
+<nav class="navbar navbar-dark navbar-expand-lg bg-secondary fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white" routerLink="/home">Need a Cake</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="text-secondary"
+            routerLink="/home"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="isLogged">
+          <a
+            class="nav-link"
+            routerLinkActive="text=secondary"
+            routerLink="pricing"
+            >Orçamento</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="isLogged">
+          <a
+            class="nav-link"
+            routerLinkActive="text=secondary"
+            routerLink="posting"
+            >Lançamentos</a
+          >
+        </li>
+
+        <li class="nav-item dropdown" *ngIf="isLogged">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Relatórios
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li>
+              <a class="dropdown-item" routerLink="/reports/futureInstallments"
+                >Compras Parceladas</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown" *ngIf="isLogged">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Cadastros
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li>
+              <a class="dropdown-item" routerLink="/accountCategory"
+                >Categorias de conta</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="postingCategory"
+                >Categorias de lançamento</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/postingGroup"
+                >Agrupadores</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/account">Contas</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="navbar-nav">
+        <div *ngIf="!isLogged; else userLoged" class="nav-item">
+          <button
+            routerLink="/user/register"
+            type="button"
+            class="btn btn-dark me-3"
+          >
+            Registrar
+          </button>
+          <button
+            routerLink="/user/login"
+            type="button"
+            class="btn btn-outline-light"
+          >
+            Login
+          </button>
+        </div>
+        <ng-template #userLoged>
+          <div
+            class="d-flex align-items-center me-3"
+            *ngIf="user$ | async as user"
+          >
+            <!-- <fa-icon
+              [icon]="faUser"
+              class="me-1 text-white"
+              size="2x"
+            ></fa-icon> -->
+            <div class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white"
+                href="#"
+                id="userDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {{ user.firstName }}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="userDropdown ">
+                <li><a class="dropdown-item" href="">Perfil</a></li>
+                <li>
+                  <a routerLink="/user/changePassword" class="dropdown-item"
+                    >Trocar senha</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/family">Família</a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" (click)="logout()">Sair</a></li>
+              </ul>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</nav>
